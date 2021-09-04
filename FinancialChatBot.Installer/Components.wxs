@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <ComponentGroup Id="ProductComponents">
+      <!-- Shortcut-->
+      <ComponentRef Id="AppShortcut" />
+    </ComponentGroup>
+
+    <DirectoryRef Id="INSTALLFOLDER" FileSource="..\FinancialChatBot\bin\$(var.Configuration)\net5.0\win-$(var.Platform)\publish\">
+      <!-- Shortcut-->
+      <Component Id="AppShortcut" Guid="{D3F40268-DC0B-4BE2-BCA5-A31148493A84}">
+        <Shortcut Id="AppShortcut"
+                  Name="!(loc.ProductName_$(var.Platform))"
+                  Target="[INSTALLFOLDER]FinancialChatBot.Exe"
+                  Directory="InstallProgramMenuFolder"
+                  WorkingDirectory="INSTALLFOLDER"
+                  Icon="robot.ico"
+                  />
+        <!-- Unique Key -->
+        <RegistryValue Id="RegShortcutKey" Root="HKCU" Key="SOFTWARE\FinancialChatBot" Name="Shortcut" Value="1" Type="integer" KeyPath="yes"/>
+        <!-- Remove start menu items -->
+        <RemoveFolder Id="RemoveStartMenu" Directory="InstallProgramMenuFolder" On="uninstall"/>
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+</Wix>

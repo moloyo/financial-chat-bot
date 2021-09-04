@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31321.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinancialChatBot", "FinancialChatBot\FinancialChatBot.csproj", "{EEAB651F-14AA-40E4-B13C-231B8A136C9A}"
+EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "FinancialChatBot.Installer", "FinancialChatBot.Installer\FinancialChatBot.Installer.wixproj", "{D5E7E70C-A97E-41E2-BA89-6BA0CAA1B157}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EEAB651F-14AA-40E4-B13C-231B8A136C9A}.Debug|x64.ActiveCfg = Debug|x64
+		{EEAB651F-14AA-40E4-B13C-231B8A136C9A}.Debug|x64.Build.0 = Debug|x64
+		{EEAB651F-14AA-40E4-B13C-231B8A136C9A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EEAB651F-14AA-40E4-B13C-231B8A136C9A}.Debug|x86.Build.0 = Debug|Any CPU
+		{EEAB651F-14AA-40E4-B13C-231B8A136C9A}.Release|x64.ActiveCfg = Release|x64
+		{EEAB651F-14AA-40E4-B13C-231B8A136C9A}.Release|x64.Build.0 = Release|x64
+		{EEAB651F-14AA-40E4-B13C-231B8A136C9A}.Release|x86.ActiveCfg = Release|Any CPU
+		{EEAB651F-14AA-40E4-B13C-231B8A136C9A}.Release|x86.Build.0 = Release|Any CPU
+		{D5E7E70C-A97E-41E2-BA89-6BA0CAA1B157}.Debug|x64.ActiveCfg = Debug|x64
+		{D5E7E70C-A97E-41E2-BA89-6BA0CAA1B157}.Debug|x86.ActiveCfg = Debug|x86
+		{D5E7E70C-A97E-41E2-BA89-6BA0CAA1B157}.Release|x64.ActiveCfg = Release|x64
+		{D5E7E70C-A97E-41E2-BA89-6BA0CAA1B157}.Release|x86.ActiveCfg = Release|x86
+		{D5E7E70C-A97E-41E2-BA89-6BA0CAA1B157}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D08BA44D-69BD-46FD-8A99-BA8B5F2C6802}
+	EndGlobalSection
+EndGlobal

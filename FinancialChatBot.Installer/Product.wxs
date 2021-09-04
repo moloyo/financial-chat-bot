@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <?if $(var.Platform)=x64?>
+  <?define ProductCode = {913FCF4B-4AE1-4FE4-B927-D13D282131A2}?>
+  <?else?>
+  <?define ProductCode = {56333A4D-9931-4F46-B0C2-E3F4A08B6630}?>
+  <?endif?>
+  
+	<Product Id="$(var.ProductCode)"
+           Name="!(loc.ProductName_$(var.Platform))"
+           Language="1033"
+           Version="1.0.0.0"
+           Manufacturer="!(loc.Company)"
+           UpgradeCode="3226da68-c83f-4a71-8ffe-d0242d4afa60">
+		<Package InstallerVersion="200" 
+             Compressed="yes"
+             InstallScope="perMachine"
+             Platform="$(var.Platform)"
+             Manufacturer="!(loc.Company)"
+             Description="Bot for a financial chat app"/>
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate EmbedCab="yes" />
+    <Icon Id="robot.ico" SourceFile="$(var.FinancialChatBot.ProjectDir)\robot.ico"/>
+    <Property Id="ARPPRODUCTICON">robot.ico</Property>
+    <Property Id="ARPURLINFOABOUT">http://google.com.ar</Property>
+
+    <UIRef Id="WixUI_Minimal"/>
+
+    <Feature Id="ProductFeature" Title="FinancialChatBot" Level="1">
+      <ComponentGroupRef Id="ProductComponents" />
+			<ComponentGroupRef Id="PublishedComponents" />
+		</Feature>
+	</Product>
+</Wix>

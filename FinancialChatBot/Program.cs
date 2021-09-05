@@ -14,36 +14,49 @@ namespace FinancialChatBot
     {
         private static readonly HttpClient client = new HttpClient();
         private static HubConnection hubConnection;
+        private static Uri uri;
 
         static async Task Main(string[] args)
         {
-            string uri;
-            Uri validatedUri;
-
-            do
-            {
-                Console.Write("Enter API Url: ");
-                uri = Console.ReadLine();
-            } while (!Uri.TryCreate(uri, UriKind.RelativeOrAbsolute, out validatedUri));
-
-            var loginBot = await LoginBot(validatedUri);
-
-            hubConnection = CreateConnection(validatedUri, loginBot.Token);
+            await CreateConnection();
 
             await ReadMessages();
 
+            Console.WriteLine("Bot is working...");
+            Console.WriteLine("Press enter to exit");
             Console.ReadLine();
-        }        
-
-        private static HubConnection CreateConnection(Uri uri, string token)
+        }  
+        
+        private static void RequestUri()
         {
-            return new HubConnectionBuilder().WithUrl(uri + "/MessageHub", options =>
+            string input;
+            do
             {
-                options.AccessTokenProvider = () => Task.FromResult(token);
-            }).Build();
+                Console.Write("Enter API Url: ");
+                input = Console.ReadLine();
+            } while (!Uri.TryCreate(input, UriKind.RelativeOrAbsolute, out uri));
         }
 
-        private static async Task<LoginResult> LoginBot(Uri uri)
+        private static async Task CreateConnection()
+        {
+            RequestUri();
+
+            try
+            {
+                var loginBot = await LoginBot();
+                hubConnection = new HubConnectionBuilder().WithUrl(uri + "/MessageHub", options =>
+                {
+                    options.AccessTokenProvider = () => Task.FromResult(loginBot.Token);
+                }).Build();
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid API");
+                await CreateConnection();
+            }
+        }
+
+        private static async Task<LoginResult> LoginBot()
         {
             var body = new
             {
